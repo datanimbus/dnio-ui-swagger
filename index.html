@@ -1,0 +1,239 @@
+<!-- HTML for static distribution bundle build -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Swagger Docs</title>
+  <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Source+Code+Pro:300,600|Titillium+Web:400,600,700"
+    rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="./swagger-ui.css">
+  <link rel="icon" type="image/png" href="./favicon_32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="./favicon_16x16.png" sizes="16x16" />
+  <style>
+    html {
+      box-sizing: border-box;
+      overflow: -moz-scrollbars-vertical;
+      overflow-y: scroll;
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+
+    body {
+      margin: 0;
+      background: #fafafa;
+    }
+
+    .topbar {
+      padding: 16px 0;
+      background-color: #f2f2f2;
+      height: 82px;
+      font-family: 'Lato', sans-serif;
+    }
+
+    .topbar .wrapper {
+      width: 100%;
+      max-width: 1460px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .topbar .topbar-wrapper {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+    }
+
+    .topbar a {
+      font-size: 1.5em;
+      font-weight: bold;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
+      text-decoration: none;
+      font-family: 'Lato', sans-serif;
+      color: #fff;
+    }
+
+    .topbar a span {
+      margin: 0;
+      padding: 0 10px;
+      width: 400px;
+    }
+
+    .topbar .download-url-wrapper a span {
+      width: 0px;
+      float: right;
+    }
+
+    .topbar .download-url-wrapper {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-flex: 3;
+      -ms-flex: 3;
+      flex: 3;
+      -webkit-box-pack: end;
+      -ms-flex-pack: end;
+      justify-content: flex-end;
+    }
+
+    .topbar .download-url-wrapper select {
+      width: 200px;
+      height: 30px;
+      margin: 0;
+      border: 2px solid #DDDDDD;
+      border-radius: 4px;
+      outline: none;
+      padding: 0px 10px;
+    }
+
+    .topbar .topbar-wrapper .logo {
+      /* width: 50px;
+      height: 50px;
+      background-image: url(./ODP-BA.svg);
+      background-size: 230px;
+      background-position: -94px;
+      opacity: 0.7; */
+      min-height: 48px;
+      max-height: 48px;
+      min-width: 232px;
+      max-width: 232px;
+      background-position: left;
+      background-size: cover;
+      background-image: url(./ODP-BA.svg);
+
+    }
+
+    .topbar .topbar-wrapper .text {
+      margin-top: -18px;
+    }
+
+    .platform-name {
+      margin-top: 3px;
+      font-size: 18px;
+      text-transform: uppercase;
+      opacity: 0.6;
+      font-weight: bold;
+    }
+
+    .product-name {
+      margin-top: 0px;
+      font-size: 13px;
+      text-transform: uppercase;
+      color: coral;
+      position: absolute;
+      font-weight: bold;
+    }
+
+    .logo {
+      width: 76px;
+      height: 72px;
+      background-image: url(./logo_black.svg);
+      background-size: 330px;
+      background-position: -123px
+    }
+
+    .platform-name {
+      margin-top: 3px;
+      font-size: 18px;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    .product-name {
+      margin-top: -3px;
+      font-size: 13px;
+      text-transform: uppercase;
+      color: coral;
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="wrapper">
+      <div class="topbar-wrapper">
+        <div class="logo float-left"></div>
+        <!-- <div class="text float-left">
+          <span class="platform-name d-block text-dark">Omni Data Platform</span>
+          <span class="product-name d-block text-primary">Business Author</span>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <div id="swagger-ui"></div>
+  <script src="./swagger-ui-bundle.js"> </script>
+  <script src="./swagger-ui-standalone-preset.js"> </script>
+  <script>
+    window.onload = function () {
+      function getQueryStrings() {
+        var assoc = {};
+        var decode = function (s) { return decodeURIComponent(s.replace(/\+/g, " ")); };
+        var queryString = location.search.substring(1);
+        var keyValues = queryString.split('&');
+        for (var i in keyValues) {
+          var key = keyValues[i].split('=');
+          if (key.length > 1) {
+            assoc[decode(key[0])] = decode(key[1]);
+          }
+        }
+        return assoc;
+      }
+      var token = localStorage.getItem('ba-token');
+      if (!token) {
+        token = sessionStorage.getItem('ba-token')
+      }
+      var url = getQueryStrings();
+      var getcall = url.q;
+      var protocol = window.location.href.split(':')[0];
+      var basepath = getcall.replace('/doc', '');
+      var base = getcall.split('swagger');
+      var port = window.location.port == "" ? "" : ":" + window.location.port;
+      var url = base[0] + 'swagger' + '?' + 'host=' + window.location.hostname + port + '&protocol=' + protocol + '&basePath=/api/c' + base[1] + '&token=' + 'JWT' + ' ' + token;
+      fetch(url, {
+        headers: {
+          'Authorization': "JWT " + token
+        },
+      }).then((data) => {
+        data.json().then(_d => {
+          _d['host'] = window.location.hostname + port;
+          _d['schemes'] = [window.location.protocol.substr(0, window.location.protocol.length - 1)];
+          const ui = SwaggerUIBundle({
+            spec: _d,
+            dom_id: '#swagger-ui',
+            deepLinking: true,
+            presets: [
+              SwaggerUIBundle.presets.apis,
+              SwaggerUIStandalonePreset
+            ],
+            plugins: [
+              SwaggerUIBundle.plugins.DownloadUrl,
+            ],
+            layout: "StandaloneLayout",
+          })
+          window.ui = ui
+
+        })
+      })
+
+    }
+  </script>
+</body>
+
+</html>
