@@ -30,152 +30,26 @@
     }
 
     .topbar {
+      display: -ms-grid;
+      display: grid;
       padding: 16px 0;
       background-color: #f2f2f2;
       height: 82px;
       font-family: 'Lato', sans-serif;
     }
 
-    .topbar .wrapper {
-      width: 100%;
-      max-width: 1460px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    .topbar .topbar-wrapper {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      align-items: center;
-    }
-
-    .topbar a {
-      font-size: 1.5em;
-      font-weight: bold;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      align-items: center;
-      -webkit-box-flex: 1;
-      -ms-flex: 1;
-      flex: 1;
-      text-decoration: none;
-      font-family: 'Lato', sans-serif;
-      color: #fff;
-    }
-
-    .topbar a span {
-      margin: 0;
-      padding: 0 10px;
-      width: 400px;
-    }
-
-    .topbar .download-url-wrapper a span {
-      width: 0px;
-      float: right;
-    }
-
-    .topbar .download-url-wrapper {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-flex: 3;
-      -ms-flex: 3;
-      flex: 3;
-      -webkit-box-pack: end;
-      -ms-flex-pack: end;
-      justify-content: flex-end;
-    }
-
-    .topbar .download-url-wrapper select {
-      width: 200px;
-      height: 30px;
-      margin: 0;
-      border: 2px solid #DDDDDD;
-      border-radius: 4px;
-      outline: none;
-      padding: 0px 10px;
-    }
-
-    .topbar .topbar-wrapper .logo {
-      /* width: 50px;
-      height: 50px;
-      background-image: url(./ODP-BA.svg);
-      background-size: 230px;
-      background-position: -94px;
-      opacity: 0.7; */
-      min-height: 48px;
-      max-height: 48px;
-      min-width: 232px;
-      max-width: 232px;
-      background-position: left;
-      background-size: cover;
-      background-image: url(./ODP-BA.svg);
-
-    }
-
-    .topbar .topbar-wrapper .text {
-      margin-top: -18px;
-    }
-
-    .platform-name {
-      margin-top: 3px;
-      font-size: 18px;
-      text-transform: uppercase;
-      opacity: 0.6;
-      font-weight: bold;
-    }
-
-    .product-name {
-      margin-top: 0px;
-      font-size: 13px;
-      text-transform: uppercase;
-      color: coral;
-      position: absolute;
-      font-weight: bold;
-    }
-
     .logo {
-      width: 76px;
-      height: 72px;
-      background-image: url(./logo_black.svg);
-      background-size: 330px;
-      background-position: -123px
-    }
-
-    .platform-name {
-      margin-top: 3px;
-      font-size: 18px;
-      text-transform: uppercase;
-      opacity: 0.7;
-    }
-
-    .product-name {
-      margin-top: -3px;
-      font-size: 13px;
-      text-transform: uppercase;
-      color: coral;
-      position: absolute;
+      background-image: url(./logo_default.svg);
+      background-repeat: no-repeat;
+      background-size: 300px;
+      background-position: left;
     }
   </style>
 </head>
 
 <body>
   <div class="topbar">
-    <div class="wrapper">
-      <div class="topbar-wrapper">
-        <div class="logo float-left"></div>
-        <!-- <div class="text float-left">
-          <span class="platform-name d-block text-dark">Omni Data Platform</span>
-          <span class="product-name d-block text-primary">Business Author</span>
-        </div> -->
-      </div>
-    </div>
+    <div class="logo"></div>
   </div>
   <div id="swagger-ui"></div>
   <script src="./swagger-ui-bundle.js"> </script>
