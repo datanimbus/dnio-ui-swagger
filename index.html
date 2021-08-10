@@ -77,9 +77,17 @@
       var getcall = url.q;
       var protocol = window.location.href.split(':')[0];
       var basepath = getcall.replace('/doc', '');
-      var base = getcall.split('swagger');
-      var port = window.location.port == "" ? "" : ":" + window.location.port;
-      var url = base[0] + 'swagger' + '?' + 'host=' + window.location.hostname + port + '&protocol=' + protocol + '&basePath=/api/c' + base[1] + '&token=' + 'JWT' + ' ' + token;
+      var base, port, url;
+      if (getcall.indexOf('/a/sm') > 0) {
+        base = getcall.split('swagger');
+        port = window.location.port == "" ? "" : ":" + window.location.port;
+        url = base[0] + 'swagger' + '?' + 'host=' + window.location.hostname + port + '&protocol=' + protocol + '&basePath=/api/c' + base[1] + '&token=' + 'JWT' + ' ' + token;
+      } else {
+        base = getcall.split('txn');
+        port = window.location.port == "" ? "" : ":" + window.location.port;
+        url = base[0] + 'utils/swagger' + '?' + 'host=' + window.location.hostname + port + '&protocol=' + protocol + '&token=' + 'JWT' + ' ' + token;
+      }
+      
       fetch(url, {
         headers: {
           'Authorization': "JWT " + token
