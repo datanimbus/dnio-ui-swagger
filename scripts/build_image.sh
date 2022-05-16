@@ -32,10 +32,10 @@ if [ $2 ]; then
 fi
 
 echo "****************************************************"
-echo "ds-ui-swaggerUI :: Building Image :: "$TAG
+echo "ds-ui-swagger :: Building Image :: "$TAG
 echo "****************************************************"
 cd $WORKSPACE
 
-docker build -t data.stack.ui-swaggerUI:$TAG .
+docker build -t data.stack.ui-swagger:$TAG .
 
 echo $TAG > $WORKSPACE/../LATEST_SWAGGER
