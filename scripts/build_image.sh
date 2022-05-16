@@ -36,6 +36,6 @@ echo "ds-ui-swaggerUI :: Building Image :: "$TAG
 echo "****************************************************"
 cd $WORKSPACE
 
-docker build -t data.stack:ui-swaggerUI.$TAG .
+docker build -t data.stack.ui-swaggerUI:$TAG .
 
 echo $TAG > $WORKSPACE/../LATEST_SWAGGER
