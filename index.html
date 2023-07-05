@@ -102,7 +102,7 @@
             deepLinking: true,
             presets: [
               SwaggerUIBundle.presets.apis,
-              SwaggerUIStandalonePreset
+              SwaggerUIStandalonePreset.slice(1) // slice removes the top bar from UI
             ],
             plugins: [
               SwaggerUIBundle.plugins.DownloadUrl,
