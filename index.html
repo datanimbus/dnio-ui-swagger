@@ -94,8 +94,11 @@
         },
       }).then((data) => {
         data.json().then(_d => {
-          _d['host'] = window.location.hostname + port;
-          _d['schemes'] = [window.location.protocol.substr(0, window.location.protocol.length - 1)];
+          const host = window.location.hostname + port;
+          const schemes = window.location.protocol.substr(0, window.location.protocol.length - 1);
+          const serverUrl = _d['servers'][0]['url'];
+          const serverUrlObject = new URL(serverUrl);
+          _d['servers'] = [{ 'url': `${schemes}://${host}${serverUrl.split(serverUrlObject.host)[1]}`}];
           const ui = SwaggerUIBundle({
             spec: _d,
             dom_id: '#swagger-ui',
