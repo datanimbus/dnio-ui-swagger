@@ -73,6 +73,7 @@
       if (!token) {
         token = sessionStorage.getItem('ba-token')
       }
+
       var url = getQueryStrings();
       var getcall = url.q;
       var protocol = window.location.href.split(':')[0];
@@ -87,7 +88,7 @@
         port = window.location.port == "" ? "" : ":" + window.location.port;
         url = base[0] + 'utils/swagger' + '?' + 'host=' + window.location.hostname + port + '&protocol=' + protocol + '&token=' + 'JWT' + ' ' + token;
       }
-      
+
       fetch(url, {
         headers: {
           'Authorization': "JWT " + token
@@ -98,7 +99,12 @@
           const schemes = window.location.protocol.substr(0, window.location.protocol.length - 1);
           const serverUrl = _d['servers'][0]['url'];
           const serverUrlObject = new URL(serverUrl);
-          _d['servers'] = [{ 'url': `${schemes}://${host}${serverUrl.split(serverUrlObject.host)[1]}`}];
+          if (getcall.indexOf('/a/sm') > 0) {
+            _d['servers'] = [{ 'url': `${schemes}://${host}/api/a${serverUrl.split(serverUrlObject.host)[1]}` }];
+          } else {
+            _d['servers'] = [{ 'url': `${schemes}://${host}${serverUrl.split(serverUrlObject.host)[1]}` }];
+          }
+          console.log(_d['servers']);
           const ui = SwaggerUIBundle({
             spec: _d,
             dom_id: '#swagger-ui',
