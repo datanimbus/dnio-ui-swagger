@@ -3,8 +3,8 @@ set -e
 
 if [ -f $WORKSPACE/../TOGGLE ]; then
     echo "****************************************************"
-    echo "data.stack:sm :: Toggle mode is on, terminating build"
-    echo "data.stack:sm :: BUILD CANCLED"
+    echo "datanimbus.io.ui-swagger :: Toggle mode is on, terminating build"
+    echo "datanimbus.io.ui-swagger :: BUILD CANCLED"
     echo "****************************************************"
     exit 0
 fi
@@ -19,8 +19,8 @@ fi
 
 if [ ! $REL ]; then
     echo "****************************************************"
-    echo "data.stack:sm :: Please Create file DATA_STACK_RELEASE with the releaese at $WORKSPACE or provide it as 1st argument of this script."
-    echo "data.stack:sm :: BUILD FAILED"
+    echo "datanimbus.io.ui-swagger :: Please Create file DATA_STACK_RELEASE with the releaese at $WORKSPACE or provide it as 1st argument of this script."
+    echo "datanimbus.io.ui-swagger :: BUILD FAILED"
     echo "****************************************************"
     exit 0
 fi
@@ -36,6 +36,6 @@ echo "ds-ui-swagger :: Building Image :: "$TAG
 echo "****************************************************"
 cd $WORKSPACE
 
-docker build -t data.stack.ui-swagger:$TAG .
+docker build -t datanimbus.io.ui-swagger:$TAG .
 
 echo $TAG > $WORKSPACE/../LATEST_SWAGGER
