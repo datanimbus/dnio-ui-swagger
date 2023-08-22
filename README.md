@@ -1,6 +1,6 @@
-## data-stack-ui-swagger
+## dnio-ui-swagger
 
-The `data-stack-ui-swagger` component generates Swagger documentation for data services and transaction APIs. It is built on top of [Swagger UI v5.0.0](https://github.com/swagger-api/swagger-ui/releases/tag/v5.0.0) and supports [OAS 3.0.0](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.0.md).
+The `dnio-ui-swagger` component generates Swagger documentation for data services and transaction APIs. It is built on top of [Swagger UI v5.0.0](https://github.com/swagger-api/swagger-ui/releases/tag/v5.0.0) and supports [OAS 3.0.0](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.0.md).
 
 ### Setting up a Development Environment 
 #### Prerequisites
@@ -9,9 +9,9 @@ The `data-stack-ui-swagger` component generates Swagger documentation for data s
 - Nginx
 #### Steps
 To set up the development environment, follow these steps:
-1) Build `ds-ui-author` and `ds-ui-appcenter` using `ng build`.
+1) Build `dnio-ui-author` and `dnio-ui-appcenter` using `ng build`.
 2) Ensure all necessary backend components are running locally
-3) Use the following Nginx configuration to serve `ds-ui-swagger`:
+3) Use the following Nginx configuration to serve `dnio-ui-swagger`:
   ```nginx
 user nginx;
 worker_processes auto;
@@ -44,19 +44,19 @@ http {
             return 301 /author;
         }
 
-        # Serve build files of ds-ui-author from the /var/www/author directory
+        # Serve build files of dnio-ui-author from the /var/www/author directory
         location /author {
             alias /var/www/author;
         }
 
-        # Serve build files of ds-ui-appcenter from the /var/www/appcenter directory
+        # Serve build files of dnio-ui-appcenter from the /var/www/appcenter directory
         location /appcenter {
             alias /var/www/appcenter;
         }
 
-        # Serve ds-ui-swagger 
+        # Serve dnio-ui-swagger 
         location /doc {
-            alias /var/www/ds-ui-swagger;
+            alias /var/www/dnio-ui-swagger;
         }
 
         # Proxy requests to the /api path to http://localhost:9080
