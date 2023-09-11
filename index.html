@@ -129,7 +129,7 @@
           const serverUrl = _d['servers'][0]['url'];
           const serverUrlObject = new URL(serverUrl);
           if (getcall.indexOf('/a/sm') > 0) {
-            _d['servers'] = [{ 'url': `${schemes}://${host}/api/a${serverUrl.split(serverUrlObject.host)[1]}` }];
+            _d['servers'] = [{ 'url': `${schemes}://${host}/api/c${serverUrl.split(serverUrlObject.host)[1]}` }];
           } else {
             _d['servers'] = [{ 'url': `${schemes}://${host}${serverUrl.split(serverUrlObject.host)[1]}` }];
           }
